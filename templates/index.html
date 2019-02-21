@@ -1,0 +1,431 @@
+      {% extends 'base.html' %}
+	  {% block content %}
+		{% load static %}
+	  <aside id="colorlib-hero">
+			<div class="flexslider">
+				<ul class="slides">
+			   	<li style="background-image: url({% static 'images/img_bg_1.jpg' %});">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-8 col-sm-12 col-md-offset-2 col-xs-12 col-md-pull-1 slider-text">
+				   				<div class="slider-text-inner">
+				   					<div class="desc">
+				   						<h2>You only have to know one thing</h2>
+					   					<h1>Best Online Learning System</h1>
+					   					<p><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn btn-primary btn-lg popup-vimeo"><span class="icon"><i class="icon-play3"></i></span> Start Learning Now!</a></p>
+				   					</div>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			   	<li style="background-image: url({% static 'images/img_bg_5.jpg' %});">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-8 col-sm-12 col-md-offset-2 col-xs-12 col-md-pull-1 slider-text">
+				   				<div class="slider-text-inner">
+				   					<div class="desc">
+				   						<h2>You only have to know one thing</h2>
+					   					<h1>Online Free Course</h1>
+					   					<p><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn btn-primary btn-lg popup-vimeo"><span class="icon"><i class="icon-play3"></i></span> Start Learning Now!</a></p>
+					   				</div>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			   	<li style="background-image: url({% static 'images/img_bg_3.jpg' %});">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-8 col-sm-12 col-md-offset-2 col-xs-12 col-md-pull-1 slider-text">
+				   				<div class="slider-text-inner">
+				   					<div class="desc">
+				   						<h2>You only have to know one thing</h2>
+					   					<h1>Education is a Key to Success</h1>
+					   					<p><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn btn-primary btn-lg popup-vimeo"><span class="icon"><i class="icon-play3"></i></span> Start Leaning Now!</a></p>
+					   				</div>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			   	<li style="background-image: url({% static 'images/img_bg_4.jpg' %});">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-8 col-sm-12 col-md-offset-2 col-xs-12 col-md-pull-1 slider-text">
+				   				<div class="slider-text-inner">
+				   					<div class="desc">
+				   						<h2>You only have to know one thing</h2>
+					   					<h1>Best Online Learning Center</h1>
+					   					<p><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn btn-primary btn-lg popup-vimeo"><span class="icon"><i class="icon-play3"></i></span> Start Learning Now!</a></p>
+					   				</div>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			  	</ul>
+		  	</div>
+		</aside>
+		<div id="colorlib-services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 services-wrap">
+						<div class="row">
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="{% url 'all_course' %}" class="services">
+									<span class="icon">
+										<i class="flaticon-desktop"></i>
+									</span>
+									<div class="desc">
+										<h3>Web <br>Development</h3>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="{% url 'mobileapp' %}" class="services">
+									<span class="icon">
+										<i class="flaticon-smartphone"></i>
+									</span>
+									<div class="desc">
+										<h3>Mobile <br>Development</h3>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="services.html" class="services">
+									<span class="icon">
+										<i class="flaticon-laboratory"></i>
+									</span>
+									<div class="desc">
+										<h3>Data <br>Science</h3>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="{% url 'videofile' %}" class="services">
+									<span class="icon">
+										<i class="flaticon-computer-graphic"></i>
+									</span>
+									<div class="desc">
+										<h3>Online Course <br>Videos</h3>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="services.html" class="services">
+									<span class="icon">
+										<i class="flaticon-video-player"></i>
+									</span>
+									<div class="desc">
+										<h3>Interview<br>Questions</h3>
+									</div>
+								</a>
+							</div>
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="services.html" class="services">
+									<span class="icon">
+										<i class="flaticon-layers"></i>
+									</span>
+									<div class="desc">
+										<h3>User <br>Interface</h3>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+		<div class="colorlib-classes">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 colorlib-heading center-heading text-center animate-box">
+						<h1 class="heading-big">Paid Courses</h1>
+						<h2>Paid Courses</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-1.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Manoj Bhargao</span>
+									<h3><a href="{% url 'android_syllabus' %}">Developing Mobile Apps Using Android</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">Rs 5000</span> <span class="price old-price">Rs 8000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-2.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Naveen kumar</span>
+									<h3><a href="#">Developing website using Django and Python</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">Rs 12000</span> <span class="price old-price">Rs 15000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-3.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Ankush Pandey</span>
+									<h3><a href="#">Developing Website Using C# and .Net</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">Rs 10000</span> <span class="price old-price">Rs 12000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-4.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Pankaj Sharma</span>
+									<h3><a href="#">Developing Website Using Php and Laravel</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">Rs 10000</span> <span class="price old-price">Rs 15000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-5.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Naveen kumar</span>
+									<h3><a href="#">Developing Website Using HTML,CSS,JavaScript</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">Rs 5000</span> <span class="price old-price">Rs 8000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-6.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Naveen kumar</span>
+									<h3><a href="#">Developing Software Using Python</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">RS 6000</span> <span class="price old-price">Rs 10000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="colorlib-event">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 row-pb-md">
+						<div class="row">
+							<div class="col-md-12 colorlib-heading animate-box">
+								<h1 class="heading-big">Events</h1>
+								<h2>Upcoming Events</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="event-entry animate-box">`
+									<div class="desc">
+										<p class="meta"><span class="day">01-02</span><span class="month">Jun</span></p>
+										<p class="organizer"><span>Organized by:</span> <span>Noah Henderson</span></p>
+										<h2><a href="event.html">We Held Free Training for Basic Programming</a></h2>
+									</div>
+									<div class="location">
+										<span class="icon"><i class="icon-map"></i></span>
+										<p>291 South 21th Street, Suite 721 New York NY 10016</p>
+									</div>
+								</div>
+								<div class="event-entry animate-box">
+									<div class="desc">
+										<p class="meta"><span class="day">05-07</span><span class="month">Jun</span></p>
+										<p class="organizer"><span>Organized by:</span> <span>Noah Henderson</span></p>
+										<h2><a href="event.html">We Held Free Training for Basic Programming</a></h2>
+									</div>
+									<div class="location">
+										<span class="icon"><i class="icon-map"></i></span>
+										<p>291 South 21th Street, Suite 721 New York NY 10016</p>
+									</div>
+								</div>
+								<div class="event-entry animate-box">
+									<div class="desc">
+										<p class="meta"><span class="day">10-12</span><span class="month">Jun</span></p>
+										<p class="organizer"><span>Organized by:</span> <span>Noah Henderson</span></p>
+										<h2><a href="event.html">We Held Free Training for Basic Programming</a></h2>
+									</div>
+									<div class="location">
+										<span class="icon"><i class="icon-map"></i></span>
+										<p>291 South 21th Street, Suite 721 New York NY 10016</p>
+									</div>
+								</div>
+								<div class="event-entry animate-box">
+									<div class="desc">
+										<p class="meta"><span class="day">19-25</span><span class="month">Jun</span></p>
+										<p class="organizer"><span>Organized by:</span> <span>Noah Henderson</span></p>
+										<h2><a href="event.html">We Held Free Training for Basic Programming</a></h2>
+									</div>
+									<div class="location">
+										<span class="icon"><i class="icon-map"></i></span>
+										<p>291 South 21th Street, Suite 721 New York NY 10016</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7 row-pb-md">
+						<div class="row">
+							<div class="col-md-12 colorlib-heading animate-box">
+								<h1 class="heading-big">Recent Blog</h1>
+								<h2>Recent Blog</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="block-21 d-flex animate-box">
+					            <a href="#" class="blog-img" style="background-image: url({% static 'images/blog-1.jpg' %});"></a>
+					            <div class="text">
+					               <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+					               <p>ven the all-powerful Pointing has no control about the blind texts it is an almost</p>
+					               <div class="meta">
+					                  <div><a href="#"><span class="icon-calendar"></span> May 29, 2018</a></div>
+					                  <div><a href="#"><span class="icon-user2"></span> Admin</a></div>
+					                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+					               </div>
+					            </div>
+					         </div>
+
+					         <div class="block-21 d-flex animate-box">
+					            <a href="#" class="blog-img" style="background-image: url({% static 'images/blog-2.jpg' %});"></a>
+					            <div class="text">
+					               <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+					               <p>ven the all-powerful Pointing has no control about the blind texts it is an almost</p>
+					               <div class="meta">
+					                  <div><a href="#"><span class="icon-calendar"></span> May 29, 2018</a></div>
+					                  <div><a href="#"><span class="icon-user2"></span> Admin</a></div>
+					                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+					               </div>
+					            </div>
+					         </div>
+
+					         <div class="block-21 d-flex animate-box">
+					            <a href="#" class="blog-img" style="background-image: url({% static 'images/blog-3.jpg' %});"></a>
+					            <div class="text">
+					               <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+					               <p>ven the all-powerful Pointing has no control about the blind texts it is an almost</p>
+					               <div class="meta">
+					                  <div><a href="#"><span class="icon-calendar"></span> May 29, 2018</a></div>
+					                  <div><a href="#"><span class="icon-user2"></span> Admin</a></div>
+					                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+					               </div>
+					            </div>
+					         </div>
+
+					         <div class="block-21 d-flex animate-box">
+					            <a href="#" class="blog-img" style="background-image: url({% static 'images/blog-4.jpg' %});"></a>
+					            <div class="text">
+					               <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+					               <p>ven the all-powerful Pointing has no control about the blind texts it is an almost</p>
+					               <div class="meta">
+					                  <div><a href="#"><span class="icon-calendar"></span> May 29, 2018</a></div>
+					                  <div><a href="#"><span class="icon-user2"></span> Admin</a></div>
+					                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+					               </div>
+					            </div>
+					         </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		 <div class="colorlib-blog colorlib-light-grey">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+						<h2>Recent News</h2>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 animate-box">
+						<article class="article-entry">
+							<a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-1.jpg' %});">
+								<p class="meta"><span class="day">18-</span><span class="month">Apr</span></p>
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">Creating Mobile Apps</a></h2>
+								<p class="admin"><span>Posted by:</span> <span>James Smith</span></p>
+								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+							</div>
+						</article>
+					</div>
+					<div class="col-md-6">
+						<div class="f-blog animate-box">
+							<a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-1.jpg' %});">
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">How to Create Website in Scratch</a></h2>
+								<p class="admin"><span>04 March 2018</span></p>
+								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+							</div>
+						</div>
+						<div class="f-blog animate-box">
+							<a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-2.jpg' %});">
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">How to Convert PSD File to HTML File?</a></h2>
+								<p class="admin"><span>04 March 2018</span></p>
+								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+							</div>
+						</div>
+						<div class="f-blog animate-box">
+							<a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-3.jpg' %});">
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">How to Build Games App in Mobile</a></h2>
+								<p class="admin"><span>04 March 2018</span></p>
+								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	
+{% endblock %}

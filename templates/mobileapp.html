@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+ <div id="colorlib-services">
+			<div class="container" >
+				<div class="row">
+					<h2>Mobile Developments tools</h2>
+					<div class="col-md-12 services-wrap" >
+						<div class="row" >
+							<div class="col-md-2 col-sm-6 text-center animate-box">
+								<a href="{% url 'all_course' %}" class="services">
+									<span class="icon">
+										<i class="flaticon-desktop"></i>
+									</span>
+									<div class="desc">
+										<h3>Android</h3>
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+ </div>
+
+     {% endblock %}

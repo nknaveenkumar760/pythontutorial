@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Upload Videos</title>
+</head>
+<body>
+
+<h1>Video Uploader</h1>
+
+{% for data in allvideo %}
+<br><br>
+
+<div>
+     <h4>{{data.name | safe }}</h4>
+    <p>{{data.description  | safe }} </p>
+<video width='400' controls>
+<source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
+</video>
+
+<br><br>
+</p>
+</div>
+
+{% endfor %}
+
+</body>
+</html>

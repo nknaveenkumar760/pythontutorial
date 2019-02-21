@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br><br><br>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card" style="width: 30rem;">
+      <div class="thumbnail">
+
+<ul class="nav nav-list primary left-menu">
+    <li class="heading"><h3>Python Basic Tutorial</h3></li>
+<li><a id="overview"  href="{% url 'python_overview' page=1 %}" >Python - Overview</a></li>
+<li><a id="environment" href="{% url 'python_overview' page=2 %}">Python - Environment Setup</a></li>
+<li><a id="syntex" href="{% url 'python_overview' page=3 %}">Python - Basic Syntax</a></li>
+<li><a id="variable" href="{% url 'python_overview' page=4 %}">Python - Variable Types</a></li>
+<li><a id="operators" href="{% url 'python_overview' page=5 %}">Python - Basic Operators</a></li>
+<li><a id="decisionmaking" href="{% url 'python_overview' page=6 %}">Python - Decision Making</a></li>
+<li><a id="loops" href="{% url 'python_overview' page=7 %}">Python - Loops</a></li>
+<li><a id="numbers" href="{% url 'python_overview' page=8 %}">Python - Numbers</a></li>
+<li><a id="strigs" href="{% url 'python_overview' page=9 %}">Python - Strings</a></li>
+<li><a id="list" href="{% url 'python_overview' page=10 %} ">Python - Lists</a></li>
+<li><a id="tuples" href="{% url 'python_overview' page=11 %}">Python - Tuples</a></li>
+<li><a id="dictionay" href="{% url 'python_overview' page=12 %}">Python - Dictionary</a></li>
+<li><a id="datetime" href="{% url 'python_overview' page=13 %}">Python - Date &amp; Time</a></li>
+<li><a id="function" href="{% url 'python_overview' page=14 %}">Python - Functions</a></li>
+<li><a id="modules" href="{% url 'python_overview' page=15 %}">Python - Modules</a></li>
+<li><a id="files" href="{% url 'python_overview' page=16 %}">Python - Files I/O</a></li>
+<li><a id="exception" href="{% url 'python_overview' page=17 %}">Python - Exceptions</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Python Advanced Tutorial</li>
+<li><a target="_top" href="/python/python_classes_objects.htm">Python - Classes/Objects</a></li>
+<li><a target="_top" href="/python/python_reg_expressions.htm">Python - Reg Expressions</a></li>
+<li><a target="_top" href="/python/python_cgi_programming.htm">Python - CGI Programming</a></li>
+<li><a target="_top" href="/python/python_database_access.htm">Python - Database Access</a></li>
+<li><a target="_top" href="/python/python_networking.htm">Python - Networking</a></li>
+<li><a target="_top" href="/python/python_sending_email.htm">Python - Sending Email</a></li>
+<li><a target="_top" href="/python/python_multithreading.htm">Python - Multithreading</a></li>
+<li><a target="_top" href="/python/python_xml_processing.htm">Python - XML Processing</a></li>
+<li><a target="_top" href="/python/python_gui_programming.htm">Python - GUI Programming</a></li>
+<li><a target="_top" href="/python/python_further_extensions.htm">Python - Further Extensions</a></li>
+</ul>
+      </div>
+      </div>
+    </div>
+
+
+  <div class="col-sm-3">
+    <div class="card" style="width: 75rem;">
+      <div class="thumbnail">
+          <div class="caption">
+          <div class="nav nav-list primary center-menu">
+              <h3>{% autoescape off %}
+                  {% for datas in data %}
+              <div id="title" style="color:red" align="center">
+                {{datas.title}}
+              </div>
+              </h3>
+              <div class="pythontutorial">
+              <p>
+               {{datas.description}}
+
+               {% endfor %}
+                {% endautoescape %}
+              </p>
+              </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--
+
+  <div class="col-sm-3">
+    <div class="card" style="width: 75rem;">
+      <div class="thumbnail">
+          <div class="caption">
+          <div class="nav nav-list primary center-menu">
+              <div class="pythontutorial">
+              <p>
+               {% autoescape off %}
+              {% for datas in data %}
+              <h3>{{datas.title}}</h3>
+  "                {{datas.description}}
+
+               {% endfor %}
+                {% endautoescape %}
+              </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+-->
+
+{% endblock %}
+
+
+
