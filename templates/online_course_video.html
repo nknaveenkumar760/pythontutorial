@@ -11,7 +11,7 @@
 					</div>
 				</div>
 
-<div class="container">
+<div class="row">
 
 {% for data in allvideo %}
 
@@ -23,7 +23,6 @@
               <div id="title" style="color:Black">
                   <h3> {{data.name | safe }} </h3>
               </div>
-
               <div>
                    <video width='400' controls>
                        <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
@@ -33,18 +32,43 @@
                  </p>
 
               </div>
-
-
           </div>
       </div>
     </div>
   </div>
   </div>
-            </div>
+</div>
+   {% endfor %}
 </div>
 
 
+<div class="row">
+    {% for data in allvideo %}
+  <div class="column">
+   <div id="titl" style="color:Black">
+                  <h3> {{data.name | safe }} </h3>
+              </div>
+              <div>
+                   <video width='400' controls>
+                       <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
+                   </video>
+                 <p>
+                  {{data.description | safe }}
+                 </p>
 
-{% endfor %}
+              </div>
+</div>
+    {% endfor %}S
+</div>
+
+
+<div class="vimeo-wrapper">
+    <div class="vimeo-video-1 vimeo-standard">
+        <iframe src="//player.vimeo.com/video/" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen align="middle" seamless></iframe>
+    </div>
+    <div class="vimeo-video-2 vimeo-standard">
+        <iframe src="//player.vimeo.com/video/" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen align="middle" seamless></iframe>
+    </div>
+</div>
 
 {% endblock %}

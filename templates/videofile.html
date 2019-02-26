@@ -1,27 +1,44 @@
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Upload Videos</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 
-<h1>Video Uploader</h1>
+
+<div class="colorlib-classes">
+				<div class="row">
+					<div class="col-md-12 colorlib-heading center-heading text-center animate-box">
+						<h1 class="heading-big">Online Video Courses</h1>
+						<h2>Learn By Video</h2>
+					</div>
+				</div>
+
+<div class="row">
 
 {% for data in allvideo %}
-<br><br>
 
-<div>
-     <h4>{{data.name | safe }}</h4>
-    <p>{{data.description  | safe }} </p>
-<video width='400' controls>
-<source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
-</video>
+  <div class="col-sm-2">
+    <div class="card" style="width: 43rem;">
+      <div class="thumbnail">
+          <div class="caption">
+          <div class="nav nav-list primary center-menu">
+              <div id="title" style="color:Black">
+                  <h3> {{data.name | safe }} </h3>
+              </div>
+              <div>
+                   <video width='400' controls>
+                       <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
+                   </video>
+                 <p>
+                  {{data.description | safe }}
+                 </p>
 
-<br><br>
-</p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+   {% endfor %}
 </div>
 
-{% endfor %}
-
-</body>
-</html>
+{% endblock %}
