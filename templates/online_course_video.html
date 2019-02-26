@@ -11,7 +11,7 @@
 					</div>
 				</div>
 
-<div class="container">
+<div class="row">
 
 {% for data in allvideo %}
 
@@ -23,7 +23,6 @@
               <div id="title" style="color:Black">
                   <h3> {{data.name | safe }} </h3>
               </div>
-
               <div>
                    <video width='400' controls>
                        <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
@@ -33,18 +32,14 @@
                  </p>
 
               </div>
-
-
           </div>
       </div>
     </div>
   </div>
   </div>
-            </div>
+</div>
+   {% endfor %}
 </div>
 
-
-
-{% endfor %}
 
 {% endblock %}
