@@ -4,7 +4,7 @@
 $(document).ready(function(){
     $('#sbscription').on('click', function(e) {
        e.preventDefault();
-
+debugger;
      console.log("email call")
       $email = $('#email').val();
       console.log($email)
