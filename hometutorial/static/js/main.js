@@ -300,7 +300,7 @@
 		dropdown();
 		goToTop();
 		loaderPage();
-		counter();
+		/*counter();*/
 		counterWayPoint();
 		parallax();
 		owlCrouselFeatureSlide();
