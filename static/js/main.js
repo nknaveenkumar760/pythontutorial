@@ -199,7 +199,7 @@
 		$('.js-counter').countTo({
 			 formatter: function (value, options) {
 	      return value.toFixed(options.decimals);
-	    }
+	    },
 		});
 	};
 
