@@ -20,7 +20,9 @@ def sbscription(request):
         subject = "Thank you for Joining Our Newsletter"
         from_email = settings.EMAIL_HOST_USER
         to_email = [email]
-        signup_message = """ Welcome to Joblisting Job portal To search all fields job anywhere  http://localhost:8000/signup/login """
+        signup_message = """ Welcome to Joblisting Job portal To search all fields job anywhere  http://localhost:8000/signup/login 
+          I love python developer  (Naveen Kumar)
+        """
         send_mail(subject=subject, from_email=from_email, recipient_list=to_email, message=signup_message,
                   fail_silently=False)
 
