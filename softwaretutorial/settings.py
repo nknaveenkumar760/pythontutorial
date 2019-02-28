@@ -25,7 +25,7 @@ SECRET_KEY = ')ubz#sjr2)w7pg$p6p_sh%c$5(tu9_b$+50$4_jgz7^^oc*srp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['13.127.43.182']
 
 
 # Application definition
@@ -118,10 +118,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tutorial_db',
-        'USER': 'root',
-        'PASSWORD': 'mysql',
+        'USER': 'testuser',
+        'PASSWORD': 'password',
         'port': '3306',
-        'host': 'localhost',
+        'host': 'tutorialdb.cwuf3ijmzsaz.ap-south-1.rds.amazonaws.com',
     }
 }
 
