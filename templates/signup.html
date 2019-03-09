@@ -85,28 +85,30 @@
 	}
 </style>
 </head>
-<body>
 
 <div class="login-form">
-    <form action="hometutorial/signup" method="post">
+    <form  method="post">
         {% csrf_token %}
 		<div class="avatar">
 		</div>
-        <h2 class="text-center"> Member Sign Up </h2>
+        <h2 class="text-center"> Member Sign Up
+            <h5><div id="success" style="color: green"><b>{{data}}</b></div></h5>
+            <h5><div id="error" style="color: green"><b>{{data}}</b></div></h5>
+
         <div class="form-group">
-        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        	<input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="E-mail" required="required">
+            <input type="email" class="form-control" name="email" id="emails" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
-            <input type="phone" class="form-control" name="phone" placeholder="Phone no" required="required">
+            <input type="tel" class="form-control" name="phone" id="phone"  placeholder="Phone no" required>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+            <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block">Sign up</button>
         </div>
 
     </form>

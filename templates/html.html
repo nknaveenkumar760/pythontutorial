@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br><br><br>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card" style="width: 30rem;">
+      <div class="thumbnail">
+
+<ul class="nav nav-list primary left-menu">
+    <li class="heading"><h3>HTML Tutorial</h3></li>
+<li><a id="htmloverview"  href="{% url 'html_tutorial' page=1 %}" >HTML - Overview</a></li>
+<li><a id="htmltag" href="{% url 'html_tutorial' page=2 %}">HTML - Basic Tags</a></li>
+<li><a id="htmlelements" href="{% url 'html_tutorial' page=3 %}">HTML - Elements</a></li>
+<li><a id="htmlattrubute" href="{% url 'html_tutorial' page=4 %}">HTML - Attributes</a></li>
+<li><a id="htmlformatting" href="{% url 'html_tutorial' page=5 %}">HTML - Formatting</a></li>
+<li><a id="htmlphrasetag" href="{% url 'html_tutorial' page=6 %}">HTML - Phrase Tags</a></li>
+<li><a id="htmlmetatag" href="{% url 'html_tutorial' page=7 %}">HTML - Meta Tags</a></li>
+<li><a id="htmlcomments" href="{% url 'html_tutorial' page=8 %}">HTML - Comments</a></li>
+<li><a id="htmlimage" href="{% url 'html_tutorial' page=9 %}">HTML - Images</a></li>
+<li><a id="htmltable" href="{% url 'html_tutorial' page=10 %} ">HTML - Tables</a></li>
+<li><a id="htmllist" href="{% url 'html_tutorial' page=11 %}">HTML - Lists</a></li>
+<li><a id="htmltextlink" href="{% url 'html_tutorial' page=12 %}">HTML - Text Links</a></li>
+<li><a id="htmlimagelink" href="{% url 'html_tutorial' page=13 %}">HTML - Image Links</a></li>
+<li><a id="htmlemaillink" href="{% url 'html_tutorial' page=14 %}">HTML - Email Links</a></li>
+<li><a id="htmlframe" href="{% url 'html_tutorial' page=15 %}">HTML - Frames</a></li>
+<li><a id="htmliframe" href="{% url 'html_tutorial' page=16 %}">HTML - Iframes</a></li>
+<li><a id="htmlblock" href="{% url 'html_tutorial' page=17 %}">HTML - Blocks</a></li>
+<li><a id="htmlbackground" href="{% url 'html_tutorial' page=17 %}">HTML - Backgrounds</a></li>
+<li><a id="htmlcolors" href="{% url 'html_tutorial' page=18 %}">HTML - Colors</a></li>
+<li><a id="htmlfonts" href="{% url 'html_tutorial' page=19 %}">HTML - Fonts</a></li>
+<li><a id="htmlforms" href="{% url 'html_tutorial' page=20 %}">HTML - Forms</a></li>
+<li><a id="htmlmultimedia" href="{% url 'html_tutorial' page=21 %}">HTML - Embed Multimedia</a></li>
+<li><a id="marquees" href="{% url 'html_tutorial' page=22 %}">HTML - Marquees</a></li>
+<li><a id="htmlheader" href="{% url 'html_tutorial' page=23 %}">HTML - Header</a></li>
+<li><a id="htmlsheet" href="{% url 'html_tutorial' page=24 %}">HTML - Style Sheet</a></li>
+<li><a id="htmljavascript" href="{% url 'html_tutorial' page=25 %}">HTML - JavaScript</a></li>
+<li><a id="htmllayout" href="{% url 'html_tutorial' page=26 %}">HTML - Layouts</a></li>
+
+
+</ul>
+      </div>
+      </div>
+    </div>
+
+
+  <div class="col-sm-3">
+    <div class="card" style="width: 75rem;">
+      <div class="thumbnail">
+          <div class="caption">
+          <div class="nav nav-list primary center-menu">
+              <h3>
+                  {% for datas in data %}
+              <div id="title" style="color:red" align="center">
+                {{datas.title | safe}}
+              </div>
+              </h3>
+              <div id="pythontutorial">
+              <p>
+               {{datas.description | safe}}
+
+               {% endfor %}
+
+              </p>
+              </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--
+
+  <div class="col-sm-3">
+    <div class="card" style="width: 75rem;">
+      <div class="thumbnail">
+          <div class="caption">
+          <div class="nav nav-list primary center-menu">
+              <div class="pythontutorial">
+              <p>
+               {% autoescape off %}
+              {% for datas in data %}
+              <h3>{{datas.title}}</h3>
+  "                {{datas.description}}
+
+               {% endfor %}
+                {% endautoescape %}
+              </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+-->
+
+{% endblock %}
+
+
+

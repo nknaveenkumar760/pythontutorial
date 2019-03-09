@@ -23,20 +23,22 @@ class Post(models.Model):
         super(Post, self).save()
 
 
-class VideoUploader(models.Model):
+class HtmlPost(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+    description = RichTextUploadingField(blank=True, null=True)
+    videoupload = RichTextUploadingField(blank=True, null=True, config_name='special',
+                                         external_plugin_resources=[(
+                                              'youtube',
+                                              '/static/videos/ckeditor_plugins/youtube/youtube/',
+                                              'plugin.js',
+                                          )],
+                                          )
 
-    description2 = RichTextUploadingField(blank=True, null=True, config_name='special',
-                                          external_plugin_resources=[(
-                                             'youtube',
-                                             '/static/ckeditorplugin/video/youtube/',
-                                             'plugin.js',
-                                            )],
-                                            )
     slug = models.SlugField(default='', blank=True)
 
     def save(self):
         self.slug = slugify(self.title)
-        super(VideoUploader, self).save()
+        super(HtmlPost, self).save()
 
 
 class Video(models.Model):
