@@ -91,7 +91,23 @@
 								<!--<li class="btn-cta"><a href="#"><span>Get started</span></a></li>-->
 							</ul>
 							<br>
+							 {% if email is None %}
 							<p class="btn-apply"><a href="#">Our Vision</a> <a href="#">Our Missions</a> <a href="{% url 'login' %}">Sign In</a></p>
+
+							{% else %}
+
+							<div class="dropdown">
+                                  <h5>Welcome {{email}}</h5>
+                                  <img src="{% static 'img/avatar.png'%}" width="30"height="30" >
+                                <div class="dropdown-content">
+
+                                  <a href="element">Profile</a>s
+                                  <a href="search">Setting</a>
+                                  <a href="{% url 'auth_and_login' %}?action=logout">LogOut</a>
+                               </div>
+                            </div>
+
+                    {% endif %}
 						</div>
 					</div>
 				</div>
@@ -255,7 +271,8 @@
 	<script src="{% static 'js/newsletter.js' %}"></script>
 	<!--Python tutorial ajax-->
 	<script src="{% static 'js/python-ajax.js' %}"></script>
-	<script src="{% static 'js/jquery.min.map' %}"></script>
+	<script src="{% static 'js/html-ajax.js' %}"></script>
+	<script src="{% static 'js/auth_ajax.js' %}"></script>
 
 	</body>
 </html>
