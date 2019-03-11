@@ -24,7 +24,7 @@ def htmllang(request):
 
     data = HtmlPost.objects.filter(id=1)
 
-    return render(request, 'html.html', {'data': data})
+    return render(request, 'html_language.html', {'data': data})
 
 
 def html_tutorial(request, page):
