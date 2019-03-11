@@ -22,7 +22,7 @@ from django.conf import settings
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('ckeditor/', include('ckeditor_uploader.urls')),
-    url('', include('hometutorial.urls')),
+    url('', include('hometutorial.urls', namespace='hometutorial')),
     url('newsletter/', include('newsletter.urls')),
     url('pythontutorial/', include('pythontutorial.urls')),
     url('paidcourses/', include('paidcourses.urls')),
