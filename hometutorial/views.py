@@ -104,3 +104,43 @@ def member_login(request):
         elif user is not None:
 
             return HttpResponse()
+
+
+def auth_and_login(request):
+
+    email = None
+    if request.method == 'GET':
+        print("start")
+        if 'action' in request.GET:
+            action = request.GET.get('action')
+            if action == 'logout':
+                if request.session.has_key('email'):
+                    request.session.flush()
+                    print("session id deleted")
+                return redirect('auth_and_login')
+
+        if 'email' in request.session:
+            email = request.session['email']
+            print(email)
+
+    elif request.method == 'POST':
+
+        password = None
+
+        if Registration.objects.filter(email=email, password=password):
+
+            request.session['email'] = email
+            key = request.session.session_key
+            print(key)
+            print(request.session.has_key('email'))
+            session_key = key
+            print(session_key)
+            Registration.objects.filter(email=email).update(session_key=session_key)
+
+            print(request.session['email'])
+
+        else:
+            pass
+
+    return render(request, 'index.html', {'email' : email, })
+
