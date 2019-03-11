@@ -105,7 +105,7 @@ def member_login(request):
 
             return HttpResponse()
 
-
+"""
 def auth_and_login(request):
 
     email = None
@@ -143,4 +143,4 @@ def auth_and_login(request):
             pass
 
     return render(request, 'index.html', {'email' : email, })
-
+"""
