@@ -13,7 +13,7 @@
         $phone = $('#phone').val()
 
         if(IsEmail($email)==false){
-          $('#success').text("invalid email id");
+          $('#success').text("Invalid Email Id");
           return false;
          }
 
@@ -79,7 +79,7 @@
        $password=$('#password').val();
 
         if($('#emails').val()=="" || $('#password').val()==""){
-           alert("please fill the all fields..")
+           $('#error').text("Please fill the fields*");
         }
 
         else {
