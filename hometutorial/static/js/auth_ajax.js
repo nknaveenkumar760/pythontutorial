@@ -19,7 +19,8 @@
 
         if( $('#username').val() == "" || $('#emails').val() == "" || $('#password').val() == "" || $('#phone').val()=="" )
              {
-            alert("Please fill up the required field ");
+            $('#success').text("Please fill the fields*");
+             return false;
         }
 
         else{
