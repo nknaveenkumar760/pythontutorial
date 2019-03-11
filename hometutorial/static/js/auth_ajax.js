@@ -80,6 +80,7 @@
 
         if($('#emails').val()=="" || $('#password').val()==""){
            $('#error').text("Please fill the fields*");
+           return false;
         }
 
         else {
