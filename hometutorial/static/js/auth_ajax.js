@@ -13,7 +13,7 @@
         $phone = $('#phone').val()
 
         if(IsEmail($email)==false){
-          $('#success').text("Invalid Email Id");
+          $('#success').text("Invalid Email ID");
           return false;
          }
 
