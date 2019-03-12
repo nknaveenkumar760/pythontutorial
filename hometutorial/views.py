@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import Registration, Login
+import logging
 
 
 def index(request):
