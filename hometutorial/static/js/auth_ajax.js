@@ -27,7 +27,7 @@
         else{
             $.ajax({
                 type: "POST",
-                url : "/registration",
+                url: $(evt.currentTarget).attr("href"),
                 enctype: "multipart/form-data",
                 cache : false,
                 data: {
