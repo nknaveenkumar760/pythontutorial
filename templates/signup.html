@@ -91,7 +91,7 @@
         {% csrf_token %}
 		<div class="avatar">
 		</div>
-        <h2 class="text-center"> Member Sign Up
+        <h2 class="text-center"> Member Sign Up</h2>
             <h5><div id="success" style="color: green"><b>{{data}}</b></div></h5>
             <h5><div id="error" style="color: green"><b>{{data}}</b></div></h5>
 
@@ -114,5 +114,7 @@
     </form>
 
 </div>
+
+ <script src="{% static 'js/jquery.min.js' %}"></script>
 
 {% endblock %}
