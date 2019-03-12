@@ -178,4 +178,9 @@ STATICFILES_DIRES = [
 
 # Nginx configuration to access static and media file
 
-
+# importing logger settings
+try:
+    from .logger_settings import *
+except Exception as e:
+    # in case of any error, pass silently.
+    pass
