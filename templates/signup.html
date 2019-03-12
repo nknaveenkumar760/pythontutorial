@@ -91,7 +91,7 @@
         {% csrf_token %}
 		<div class="avatar">
 		</div>
-        <h2 class="text-center"> Member Sign Up</h2>
+        <h2 class="text-center"> Member Sign Up
             <h5><div id="success" style="color: green"><b>{{data}}</b></div></h5>
             <h5><div id="error" style="color: green"><b>{{data}}</b></div></h5>
 
@@ -108,7 +108,7 @@
             <input type="tel" class="form-control" name="phone" id="phone"  placeholder="Phone no" required>
         </div>
         <div class="form-group">
-            <button type="submit" id="signup" href="{% url 'registration' %}" class="btn btn-primary btn-lg btn-block">Sign up</button>
+            <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block">Sign up</button>
         </div>
 
     </form>
