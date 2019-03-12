@@ -88,7 +88,7 @@
 
 
 <div class="login-form">
-    <form action="/member_login" method="post">
+    <form method="post">
 		{% csrf_token %}
         <div class="avatar">
 		</div>
@@ -101,7 +101,7 @@
             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
         </div>
         <div class="form-group">
-            <button type="submit" id="login" class="btn btn-primary btn-lg btn-block">Sign In</button>
+            <button type="submit" id="login" href="{% url 'member_login' %}" class="btn btn-primary btn-lg btn-block">Sign In</button>
         </div>
 		<div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>

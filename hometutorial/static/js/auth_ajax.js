@@ -27,7 +27,7 @@
         else{
             $.ajax({
                 type: "POST",
-                url: $(evt.currentTarget).attr("href"),
+                url: $(e.currentTarget).attr("href"),
                 enctype: "multipart/form-data",
                 cache : false,
                 data: {
@@ -88,7 +88,7 @@
 
         $.ajax({
           type: "POST",
-          url: "/member_login",
+          url: $(e.currentTarget).attr("href"),
           data: {
                email:$email,
                password:$password,
