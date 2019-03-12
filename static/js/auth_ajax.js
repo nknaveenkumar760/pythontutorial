@@ -12,16 +12,17 @@
         $password = $('#password').val();
         $phone = $('#phone').val()
 
-        if(IsEmail($email)==false){
-          $('#success').text("invalid email id");
-          return false;
-         }
 
         if( $('#username').val() == "" || $('#emails').val() == "" || $('#password').val() == "" || $('#phone').val()=="" )
              {
             $('#success').text("Please fill the fields*");
              return false;
-        }
+          }
+
+         if(IsEmail($email)==false){
+          $('#success').text("Invalid Email ID");
+          return false;
+         }
 
         else{
             $.ajax({
@@ -79,7 +80,8 @@
        $password=$('#password').val();
 
         if($('#emails').val()=="" || $('#password').val()==""){
-           alert("please fill the all fields..")
+           $('#error').text("Please fill the fields*");
+           return false;
         }
 
         else {
