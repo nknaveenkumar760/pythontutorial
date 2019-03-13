@@ -94,16 +94,14 @@
 
 							{% else %}
 
-							<div class="dropdown">
-                                  <h5>Welcome {{email}}</h5>
-                                  <img src="{% static 'img/avatar.png'%}" width="30"height="30" >
-                                <div class="dropdown-content">
+							<ul class="dropdown">
+                                  <h5 style="color:green">Welcome {{email}}</h5><img src="{% static 'images/avtar.png'%}" width="30"height="30" >
 
-                                  <a href="element">Profile</a>s
-                                  <a href="search">Setting</a>
-                                  <a href="{% url 'auth_and_login' %}?action=logout">LogOut</a>
-                               </div>
-                            </div>
+									<li><a href="">Profile</a></li>
+									<li> <a href="">Setting</a></li>
+									<li> <a href="{% url 'member_login' %}?action=logout">LogOut</a></li>
+
+							</ul>
 
                     {% endif %}
 					</div>

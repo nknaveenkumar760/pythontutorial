@@ -96,15 +96,10 @@
           },
 
            success:function(data){
-           if (data){
-            window.location=data
-           }
-          else{
-          error="You Enter Wrong email and password"
-           $('#error').text(error);
+           console.log(data);
+           $('#error').text(data);
           }
 
-       }
         });
       }
    });

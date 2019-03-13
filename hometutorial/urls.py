@@ -16,8 +16,8 @@ urlpatterns = [
     path('mobileapp', views.mobileapp, name='mobileapp'),
     path('login', views.login, name='login'),
     path('signup', views.signup, name='signup'),
-    path('registration/', views.registration, name='registration'),
-    path('member_login', views.member_login, name='member_login')
+    path('registration', views.registration, name='registration'),
+    path('member_login', views.auth_and_login, name='member_login')
 
 
 ]

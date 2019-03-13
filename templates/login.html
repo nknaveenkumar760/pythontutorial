@@ -88,20 +88,20 @@
 
 
 <div class="login-form">
-    <form method="post">
+    <form method="POST" action="/member_login">
 		{% csrf_token %}
         <div class="avatar">
 		</div>
         <h2 class="text-center">Member Login</h2>
          <div id="error" align="middle" style="color: red"><h4><b>{{data}}</b></h4></div>&nbsp;
         <div class="form-group">
-        	<input type="email" class="form-control" name="email" id="emails" placeholder="Enter your Email" required="required">
+        	<input type="email" class="form-control" name="email" id="emails" placeholder="Enter your Email" >
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" >
         </div>
         <div class="form-group">
-            <button type="submit" id="login" class="btn btn-primary btn-lg btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
         </div>
 		<div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>

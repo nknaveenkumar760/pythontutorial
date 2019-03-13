@@ -88,7 +88,7 @@
 
         $.ajax({
           type: "POST",
-          url: "/member_login",
+          url: "/auth_login",
           data: {
                email:$email,
                password:$password,

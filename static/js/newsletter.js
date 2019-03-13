@@ -1,4 +1,5 @@
 
+
 /*Newsletter code*/
 
 $(document).ready(function(){
@@ -30,7 +31,7 @@ $(document).ready(function(){
   }
         else {
 
-          $('#info').html('Invalid Email address enter correct Email')
+          $('#info').html('Invalid Email Address Enter correct Email')
 
 
          }
@@ -53,5 +54,4 @@ function validateEmail($email) {
         return false;
    }
 }
-
 
