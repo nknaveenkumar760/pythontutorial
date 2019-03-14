@@ -130,7 +130,10 @@ def auth_and_login(request):
 
     elif request.method == 'POST':
 
-        if Registration.objects.filter(email=email, password=password):
+        user = Registration.objects.all().filter(email=email, password=password)
+        print(user)
+
+        if user:
 
             request.session['email'] = email
             key = request.session.session_key
@@ -145,7 +148,8 @@ def auth_and_login(request):
             print(request.session['email'])
 
         else:
-            pass
+            message = "Invalid Email and Password"
+            return render(request, 'login.html', {'message': message})
 
     return render(request, 'index.html', {'email': email})
 
