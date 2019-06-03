@@ -2,16 +2,26 @@
 {% block content %}
 {% load static %}
 
-<br><br>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="{% static 'images/android-training.jpg' %}" style = "width:100%; height:350px">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div></div>
+<!--
+<div style="background-image: url({% static 'images/android-trianing.jpg' %});"></div>
+--><br><br>
 <div class="container">
 <div class="row">
-<div class="col-12 text-center"><h1 class="varela">Learn Android Development</h1></div>
 <div class="text-center margin-30">
 <div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
 </div>
-</div>
-<div>
+    <div></div>
    <button type="submit"  class="btn btn-primary">Download Android Syllabus </button>
 </div>
 <hr>
@@ -94,12 +104,43 @@
           <div class="caption">
           <div class="nav nav-list primary center-menu">
 	<ul class="nav nav-tabs">
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>  Teacher Overview</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Course Details</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Payment Details</a></li>
+        <li class="active"><a data-toggle="tab" href="#teacher">  Teacher Overview</a></li>
+        <li><a data-toggle="tab" href="#course">Course Details</a></li>
+        <li><a data-toggle="tab" href="#payment"> Payment</a></li>
     </ul>
-              <br><br>
-              <h4>Hello python ............</h4>
+              <br>
+              <div class="tab-content">
+    <div id="teacher" class="tab-pane fade in active">
+        <h3>Manoj Bhargao </h3><div><img src="{% static 'images/manoj.jpg' %}" style = "width:200px; height:200px"></div>
+      <p> Manoj Bhargaov is Professional in Android Development his qualification MCA and have worked in infosys company ,HCL etc his passion is Teaching
+          he has developed many applicaiton .
+
+          he is subject specialist who have mastered on Android technology.
+          he is have received excellence awards for their dedicated Android training and coaching.
+          he is researchers, consultant, and analysts working as an employee in HCL Technologies, Birla-soft, TCS, IBM, Sapient, Agilent Technologies, and so on.
+          he is single, double and triple certified professionals in the subject.
+          he  has regular coordination with MNCs HR team on daily basis.
+
+         </p>
+    </div>
+    <div id="course" class="tab-pane fade">
+      <h3>Android Training Timing</h3>
+      <p>
+          Fast Track Training Program (4+ hours Saturday And Sunday)<br>
+          Demo Classes (Free Demo Class Time 1 pm Saturday And Sunday)<br>
+          Weekend Training Classes (Saturday, Sunday & Holidays)<br>
+      </p>
+    </div>
+    <div id="payment" class="tab-pane fade">
+      <h3>You can pay for Paid Courses</h3>
+      <p>
+
+
+          <a type="button"  class="btn btn-primary" href="{% url 'payment' %}">Payments </a>
+      </p>
+    </div>
+  </div>
+
 </div>
 </div>
       </div>

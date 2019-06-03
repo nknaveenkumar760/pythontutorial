@@ -1,6 +1,5 @@
-
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 	<head>
 	<meta charset="utf-8">
@@ -24,6 +23,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
+		<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Animate.css -->
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 	<!-- Icomoon Icon Fonts-->
@@ -53,7 +54,7 @@
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="{% static 'js/respond.min.js' %}"></script>
 	<![endif]-->
-
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
 
 	</head>
 	<body>
@@ -66,7 +67,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-4">
-							<h3><b style="color:white"><img src="{% static 'images/logo.png' %}" width="50" height="50"> KnowledgeTutorial</b></h3>
+							<h3><img src="{% static 'images/logo.png' %}" width="50" height="50"><a href="{% url 'index' %}"><b style="color:white"> KnowledgeTutorial</b></a></h3>
 						</div>
 						<div class="col-xs-6 col-md-push-2 text-right">
 							<ul>
@@ -74,34 +75,41 @@
 								<li class="has-dropdown">
 									<a href="{% url 'courses' %}">Courses</a>
 									<ul class="dropdown">
-										<li><a href="courses-single.html">Courses Single</a></li>
-										<li><a href="#">Mobile Apps</a></li>
-										<li><a href="#">Website</a></li>
-										<li><a href="#">Web Design</a></li>
-										<li><a href="#">WordPress</a></li>
+										<li><a href="{% url 'mobileapp' %}">Mobile Apps</a></li>
+										<li><a href="{% url 'all_course' %}">Website</a></li>
+
 									</ul>
 								</li>
 								<li><a href="{% url 'teachers' %}">Teachers</a></li>
 								<li><a href="{% url 'about' %}">About</a></li>
 								<li><a href="{% url 'event' %}">Events</a></li>
-								<li><a href="{% url 'news' %}">News</a></li>
+								<li><a href="{% url 'blog:bloglist' %}">blog</a></li>
 								<li><a href="{% url 'contacts' %}">Contact</a></li>
 								<!--<li class="btn-cta"><a href="#"><span>Get started</span></a></li>-->
 							</ul>
 							<br>
-							 {% if email is None %}
+							 {% if user.is_authenticated %}
+							<ul class="dropdown">
+                                  <h5 style="color:green">Welcome {{user.username}}</h5><img src="{% static 'images/avtar.png'%}" width="30"height="30" >
+
+									<li><a href="">Profile</a></li>
+									<li> <a href="">Setting</a></li>
+									<li> <a href="{% url 'logout' %}?action=logout">LogOut</a></li>
+							</ul>
+
+							 {% elif request.COOKIES.username is None %}
 							<p class="btn-apply"><a href="#">Our Vision</a> <a href="#">Our Missions</a> <a href="{% url 'login' %}">Sign In</a></p>
 
 							{% else %}
 
 							<ul class="dropdown">
-                                  <h5 style="color:green">Welcome {{email}}</h5><img src="{% static 'images/avtar.png'%}" width="30"height="30" >
+                                  <h5 style="color:green">Welcome {{request.COOKIES.username}}</h5><img src="{% static 'images/avtar.png'%}" width="30"height="30" >
 
 									<li><a href="">Profile</a></li>
 									<li> <a href="">Setting</a></li>
-									<li> <a href="{% url 'member_login' %}?action=logout">LogOut</a></li>
-
+									<li> <a href="{% url 'logout' %}?action=logout">LogOut</a></li>
 							</ul>
+
 
                     {% endif %}
 					</div>
@@ -114,42 +122,11 @@
         {% block content %}
 
 
-        {% endblock %}
+		{% endblock %}
+		
+		{% include "chatbot.html" %}
 
 
-        	<div id="colorlib-subscribe" class="subs-img" style="background-image: url({% static 'images/img_bg_2.jpg' %});" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-						<h2>Subscribe Newsletter</h2>
-						<p>Subscribe our newsletter and get latest update</p>
-					</div>
-				</div>
-				<div class="row animate-box">
-					<div class="col-md-6 col-md-offset-3">
-						<div class="row">
-							<div class="col-md-12">
-							<form class="form-inline qbstp-header-subscribe">
-								<div class="col-three-forth">
-									<div class="form-group">
-										{% csrf_token %}
-										<input type="text" class="form-control" id="email" placeholder="Enter your email" required>
-										<div id="info" style="color:red">{{data}}</div>
-									</div>
-								</div>
-								<div class="col-one-third">
-									<div class="form-group">
-										<button type="submit" id="sbscription" class="btn btn-primary">Subscribe Now</button>
-									</div>
-								</div>
-							</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<footer id="colorlib-footer">
 			<div class="container">
 				<div class="row row-pb-md">
@@ -166,12 +143,12 @@
 						<h4>Programs</h4>
 						<p>
 							<ul class="colorlib-footer-links">
-								<li><a href="#"><i class="icon-check"></i> Diploma Degree</a></li>
-								<li><a href="#"><i class="icon-check"></i> BS Degree</a></li>
-								<li><a href="#"><i class="icon-check"></i> Beginner</a></li>
-								<li><a href="#"><i class="icon-check"></i> Intermediate</a></li>
-								<li><a href="#"><i class="icon-check"></i> Advance</a></li>
-								<li><a href="#"><i class="icon-check"></i> Difficulty</a></li>
+								<li><a href="#"><i class="icon-check"></i> Python</a></li>
+								<li><a href="#"><i class="icon-check"></i> Java</a></li>
+								<li><a href="#"><i class="icon-check"></i> Django</a></li>
+								<li><a href="#"><i class="icon-check"></i> Machine Learning</a></li>
+								<li><a href="#"><i class="icon-check"></i>HTML</a></li>
+								<li><a href="#"><i class="icon-check"></i> Bootstrap</a></li>
 							</ul>
 						</p>
 					</div>
@@ -202,26 +179,6 @@
 							</ul>
 						</p>
 					</div>
-
-					<div class="col-md-3 colorlib-widget">
-						<h4>Recent Post</h4>
-						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-1.jpg' %});">
-							</a>
-							<div class="desc">
-								<h2><a href="blog.html">Creating Mobile Apps</a></h2>
-								<p class="admin"><span>18 April 2019</span></p>
-							</div>
-						</div>
-						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-2.jpg' %});">
-							</a>
-							<div class="desc">
-								<h2><a href="blog.html">Creating Mobile Apps</a></h2>
-								<p class="admin"><span>18 April 2019</span></p>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="copy">
@@ -237,6 +194,7 @@
 			</div>
 		</footer>
 	</div>
+
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop" style="color:green"><i class="icon-arrow-up2"></i></a>
@@ -269,6 +227,7 @@
 	<script src="{% static 'js/python-ajax.js' %}"></script>
 	<script src="{% static 'js/html-ajax.js' %}"></script>
 	<script src="{% static 'js/auth_ajax.js' %}"></script>
-
+	<script src="{% static 'js/contact_ajax_auth.js' %}"></script>
+	
 	</body>
 </html>

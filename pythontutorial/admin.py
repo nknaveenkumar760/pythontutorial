@@ -6,3 +6,4 @@ admin.site.register(Post)
 admin.site.register(HtmlPost)
 admin.site.register(Video)
 
+

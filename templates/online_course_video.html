@@ -11,34 +11,32 @@
 					</div>
 				</div>
 
-<div class="row">
+<div class="colorlib-blog">
+		    	<div class="container">
+                   <div class="row">
+                     <div class="col-lg-12">
+								{% for data in allvideo %}
+					   <div class="col-lg-4">
+								<div class="event-entry animate-box">
+									<div class="" style="border-bottom:1px solid #e6e6e6;">
+										<h3> {{data.name | safe }} </h3>
+									</div>
+									<div>
+                                       <video style="width:100%;" controls>
+                                        <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
+                                       </video>
+                                     <p>
+                                      {{data.description | safe }}
+                                     </p>
+                                   </div>
+								</div>
 
-{% for data in allvideo %}
-
-  <div class="col-sm-2">
-    <div class="card" style="width: 43rem;">
-      <div class="thumbnail">
-          <div class="caption">
-          <div class="nav nav-list primary center-menu">
-              <div id="title" style="color:Black">
-                  <h3> {{data.name | safe }} </h3>
-              </div>
-              <div>
-                   <video width='400' controls>
-                       <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
-                   </video>
-                 <p>
-                  {{data.description | safe }}
-                 </p>
-
-              </div>
-          </div>
-      </div>
-    </div>
-  </div>
-  </div>
-</div>
-   {% endfor %}
+							</div>
+					   {% endfor %}
+	                      </div>
+						</div>
+					</div>
+		</div>
 </div>
 
 

@@ -88,7 +88,7 @@
 
         $.ajax({
           type: "POST",
-          url: "/auth_login",
+          url: "/member_login",
           data: {
                email:$email,
                password:$password,
@@ -96,17 +96,46 @@
           },
 
            success:function(data){
-           if (data){
-            window.location=data
-           }
-          else{
-          error="You Enter Wrong email and password"
-           $('#error').text(error);
+           console.log(data);
+           $('#error').text(data);
           }
 
-       }
         });
       }
    });
  });
 
+/*Forget Password */
+
+$(document).ready(function(){
+
+    $('#forget_button').on('click',function(e){
+         e.preventDefault();
+
+        $email = $('#inputEmail').val()
+           if($('#inputEmail').val()==""){
+
+            $('#success').text("Please fill the fields*");
+            return false;
+
+           }
+
+        else {
+
+            $.ajax({
+              type: "POST",
+              url: "/forget_password",
+              data: {
+                   email:$email,
+                   csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+              },
+
+               success:function(data){
+               console.log(data);
+               $('#success').text(data);
+              }
+
+            });
+          }
+    });
+});

@@ -22,10 +22,17 @@ from django.conf import settings
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('ckeditor/', include('ckeditor_uploader.urls')),
+    url('paypal/', include('paypal.standard.ipn.urls')),
     url('', include('hometutorial.urls')),
     url('newsletter/', include('newsletter.urls')),
     url('pythontutorial/', include('pythontutorial.urls')),
     url('paidcourses/', include('paidcourses.urls')),
+    url('payments/', include('payments.urls')),
+    url('blog/', include('blog.urls', namespace='blog')),
+    url('contact/', include('contact.urls')),
+
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

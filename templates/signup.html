@@ -109,6 +109,13 @@
         </div>
         <div class="form-group">
             <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block">Sign up</button>
+		</div>
+		<div class="colorlib-social-icons">
+            <a class="btn-floating btn-lg btn-fb" href="{% url 'social:begin' 'facebook' %}" ><i class="fa fa-facebook"></i> </a>
+            <a href="#" class="btn-floating btn-lg btn-tw"><i class="fa fa-twitter"></i> </a>
+            <a class="btn-floating btn-lg btn-git" href="{% url 'social:begin' 'github' %}"><i class="fa fa-github" ></i> </a>
+            <a class="btn-floating btn-lg btn-gplus" href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa fa-google"></i></a>
+            </div>
         </div>
 
     </form>

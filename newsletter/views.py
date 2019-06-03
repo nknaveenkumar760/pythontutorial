@@ -20,8 +20,8 @@ def sbscription(request):
         subject = "Thank you for Joining Our Newsletter"
         from_email = settings.EMAIL_HOST_USER
         to_email = [email]
-        signup_message = """ Thank you to subscribe You get latest article and evnets updated on mailing 
-                           you can learn any Technology on this site 13.127.43.182  
+        signup_message = """ Thank you to subscribe You get latest article and evnets updated on mail
+                           you can learn any Technology on this site knowledgetutorialhub.com.
                            
         """
         send_mail(subject=subject, from_email=from_email, recipient_list=to_email, message=signup_message,

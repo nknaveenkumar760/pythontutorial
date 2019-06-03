@@ -11,15 +11,12 @@
 					</div>
 				</div>
 
-<div class="row">
+
+<!--<div class="row">
 
 {% for data in allvideo %}
 
-  <div class="col-sm-2">
-    <div class="card" style="width: 43rem;">
-      <div class="thumbnail">
-          <div class="caption">
-          <div class="nav nav-list primary center-menu">
+    <div class="card" style="width: 40rem;">
               <div id="title" style="color:Black">
                   <h3> {{data.name | safe }} </h3>
               </div>
@@ -30,15 +27,43 @@
                  <p>
                   {{data.description | safe }}
                  </p>
-
-              </div>
           </div>
       </div>
-    </div>
-  </div>
-  </div>
-</div>
-   {% endfor %}
-</div>
 
+
+   {% endfor %}
+
+    </div>-->
+
+
+
+<div class="colorlib-blog">
+		    	<div class="container">
+                   <div class="row">
+
+								{% for data in allvideo %}
+					   <div class="col-md-6">
+								<div class="event-entry animate-box">`
+									<div class="desc">
+										<h3> {{data.name | safe }} </h3>
+										<p class="organizer"><span>Organized by:</span><span>{{data.organizer}}</span></p>
+										<a href="{{data.get_absolute_url}}"><h4>{{data.title}}</h4></a>
+									</div>
+									<div>
+                                       <video width='400' controls>
+                                        <source src='{{ MEDIA_URL }}{{ data.videofile }}' type='video/mp4'>
+                                       </video>
+                                     <p>
+                                      {{data.description | safe }}
+                                     </p>
+                                   </div>
+								</div>
+
+
+							</div>
+					   {% endfor %}
+						</div>
+					</div>
+		</div>
+</div>
 {% endblock %}

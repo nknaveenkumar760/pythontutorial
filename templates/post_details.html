@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+<link rel="stylesheet" href="{% static 'css/blog_style.css' %}" xmlns="http://www.w3.org/1999/html">
+
+<style>
+  .imgoverflow img{ width:100% !important; }
+
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <img class="top-img" src="{{post.image.url}}" style = "width:100%; height:350px">
+      <div class="carousel-caption">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="padding-top:2%; ">
+
+  <div class="col-sm-6">
+    <div class="card" style="width: 63rem; position: relative; left: 70px;">
+      <div class="thumbnail">
+          <div class="caption">
+ {% autoescape off %}
+              <div style="margin: 8px;" id="share">
+                  <h1 class="posttitle" style="color:#55acee;">{{post.title}}</h1>
+               <p class="date">
+  	Published {{ post.publish }} by {{ post.author }}
+  </p>
+  <p>
+     <h5 class="imgoverflow">{{ post.body|linebreaks }}</h5>
+
+    <div class="post-tags mt-30">
+                                <ul>
+                                    <li><a href="#">HealthFood</a></li>
+                                    <li><a href="#">Sport</a></li>
+                                    <li><a href="#">Game</a></li>
+                                </ul>
+                            </div>
+                            <div class="vizew-post-author d-flex align-items-center py-5">
+                                <div class="post-author-thumb">
+                                    <img src="{% static 'images/naveen.jpg'%}" width="90px" height="90px" style="border-radius: 50%;">
+                                </div>
+                                <div class="post-author-desc pl-4">
+                                    <a href="https://www.facebook.com/naveenkumar.gupta.33" class="author-name">Naveen kumar</a>
+                                    <p>Hello! My name is Naveen kumar. I’m a Python and Web Developer with over five years of professional.</p>
+                                    <p>
+									<ul class="colorlib-social-icons">
+										<li><a href="#"><i class="icon-twitter"></i></a></li>
+										<li><a href="https://www.facebook.com/naveenkumar.gupta.33"><i class="icon-facebook"></i></a></li>
+								        <li><a href="Http://linkedin.com/in/naveen-gupta-b60230ab"><i class="icon-linkedin"></i></a></li>
+
+										<li><a href="#"><i class="icon-dribbble"></i></a></li>
+									</ul>
+                                </div>
+                            </div>
+
+<p>
+  <a href="{% url 'blog:post_share' post.id %}">
+    Share this post
+  </a>
+</p>
+  </p>
+
+
+  <h2>Similar Posts</h2>
+  {% for post in similar_posts %}
+    <p>
+      <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    </p>
+    {% empty %}
+
+        There are no similar posts yet.
+    {% endfor %}
+
+{% with comments.count as total_comments %}
+  <h2>
+    {{ total_comments }} comment{{ total_comments|pluralize }}
+  </h2>
+{% endwith %}
+
+{% for comment in comments %}
+  <div class="comment">
+    <p class="info">
+      Comment {{ forloop.counter }} by {{ comment.name }}
+      {{ comment.created }}
+    </p>
+    {{ comment.body|linebreaks }}
+  </div>
+{% empty %}
+  <p>There are no comments yet.</p>
+{% endfor %}
+
+
+  <h2>Add a new comment</h2>
+  <form action="{{ post.get_absolute_url}}" method="post" class="form_data">
+    {{ comment_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Add comment" class="bbtn btn-primary"></p>
+
+  </form>
+
+               {% endautoescape %}
+
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="col-md-6">
+    <div class="card"style="width:20rem;position: relative; left:350px;" >
+      <div class="thumbnail" style="background-color: #222527">
+
+                    <div class="sidebar-area">
+                       <center> <div class="single-widget share-post-widget mb-50" >
+                            <p>Share This Post</p>
+                            <a href="{% url 'social:begin' 'facebook' %}" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+                            <a href="{% url 'social:begin' 'github' %}" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i> Github</a>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="google"><i class="fa fa-google" aria-hidden="true"></i> Google+</a>
+                        </div>
+                           </center>
+                        <div class="single-widget p-0 author-widget">
+                            <div class="p-4">
+                                <img class="author-avatar" src="{% static 'images/naveen.jpg'%}" alt="">
+                                <a href="#" class="author-name">Naveen kumar</a>
+                                <div class="author-social-info">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                                <p>I'm Python and Web Developer I ntrested to write Blogs and Articles, i have 2 years Experiences</p>
+                            </div>
+                                 <div class="social">
+                                 <ul class="colorlib-social-icons" style="background-color:green;">
+										<li><a href="#"><i class="icon-twitter"></i></a></li>
+										<li><a href="https://www.facebook.com/naveenkumar.gupta.33"><i class="icon-facebook"></i></a></li>
+								        <li><a href="Http://linkedin.com/in/naveen-gupta-b60230ab"><i class="icon-linkedin"></i></a></li>
+									</ul>
+                                 </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+           </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

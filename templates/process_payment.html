@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <br><br>
+
+<div class="row">
+					<div class="col-md-4 animate-box">
+						<div class="classes">
+							<div class="classes-img" style="background-image: url({% static 'images/classes-1.jpg' %});">
+							</div>
+							<div class="wrap">
+								<div class="desc">
+									<span class="teacher">Teacher - Manoj Bhargao</span>
+									<h3><a href=>Developing Mobile Apps Using Android</a></h3>
+								</div>
+								<div class="pricing">
+									<p><span class="price">Rs 8000</span> <span class="price old-price">Rs 8000</span> <span class="more"><a href="#"><i class="icon-link"></i></a></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+    <h3>Make Payment to Pay for Courses</h3> <h2><b>RS 8000 </b></h2>
+    {{ form.render }}
+
+</div>
+
+
+    {% endblock %}

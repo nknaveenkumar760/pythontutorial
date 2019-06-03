@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')ubz#sjr2)w7pg$p6p_sh%c$5(tu9_b$+50$4_jgz7^^oc*srp'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['13.127.43.182']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -37,12 +38,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'hometutorial',
     'ckeditor',
     'ckeditor_uploader',
+    'paypal.standard.ipn',
     'newsletter',
     'pythontutorial',
     'paidcourses',
+    'payments',
+    'blog',
+    'taggit',
+    'widget_tweaks',
+    'contact',
+    'social_django',
+
+
+
 
 
 ]
@@ -76,6 +88,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'nknaveenkumar760@gmail.com'
 EMAIL_HOST_PASSWORD = 'nokiaasha205@'
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,8 +100,58 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.debug.debug',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'social.pipeline.debug.debug',
+
+)
+
+SOCIAL_AUTH_DISCONNECT_PIPELINE = (
+    # Verifies that the social association can be disconnected from the current
+    # user (ensure that the user login mechanism is not compromised by this
+    # disconnection).
+    'social_core.pipeline.disconnect.allowed_to_disconnect',
+
+    # Collects the social associations to disconnect.
+    'social_core.pipeline.disconnect.get_entries',
+
+    # Revoke any access_token when possible.
+    'social_core.pipeline.disconnect.revoke_tokens',
+
+    # Removes the social associations.
+    'social_core.pipeline.disconnect.disconnect',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+'https://www.googleapis.com/auth/userinfo.email',
+'https://www.googleapis.com/auth/userinfo.profile'
+]
+
+
 
 ROOT_URLCONF = 'softwaretutorial.urls'
 
@@ -102,6 +167,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'social_django.context_processors.backends',  # oauth-settings
+                'social_django.context_processors.login_redirect',  # oauth-settings
             ],
         },
     },
@@ -117,11 +184,11 @@ WSGI_APPLICATION = 'softwaretutorial.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tutorial_db',
-        'USER': 'testuser',
-        'PASSWORD': 'password',
+        'NAME': 'knowledge_tutorial',
+        'USER': 'root',
+        'PASSWORD': 'password123',
         'port': '3306',
-        'host': 'knowledgetutorial.cwuf3ijmzsaz.ap-south-1.rds.amazonaws.com',
+        'host': 'localhost',
     }
 }
 
@@ -162,7 +229,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'data/') # 'data' is my media folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # 'data' is my media folder
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
@@ -176,6 +243,13 @@ STATICFILES_DIRES = [
 
 ]
 
+
+PAYPAL_RECEIVER_EMAIL = 'nknaveenkumar760-facilitator@gmail.com'
+PAYPAL_TEST = True
+
+
+
+
 # Nginx configuration to access static and media file
 
 # importing logger settings
@@ -184,3 +258,59 @@ try:
 except Exception as e:
     # in case of any error, pass silently.
     pass
+
+
+AUTH_REMEMBER_COOKIE_AGE = 86400 * 28  # 4 weeks by default
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Google+ SignIn (google-plus)
+SOCIAL_AUTH_GOOGLE_PLUS_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
+'https://www.googleapis.com/auth/plus.login',
+'https://www.googleapis.com/auth/userinfo.email',
+'https://www.googleapis.com/auth/userinfo.profile'
+]
+
+# GOOGLE AUTH KEY
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+# GOOGLE AUTH KEY
+SOCIAL_AUTH__KEY = config('SOCIAL_AUTH__KEY')
+SOCIAL_AUTH__SECRET = config('SOCIAL_AUTH__SECRET')
+
+# GITHUB AUTH KEY
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET')
+
+# FACEBOOK AUTH KEY
+SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+# PAYTM AUTH KEY
+PAYTM_MERCHANT_KEY = config('PAYTM_MERCHANT_KEY')
+PAYTM_MERCHANT_ID = config('PAYTM_MERCHANT_ID')
+
+HOST_URL = "http://localhost:8080"
+PAYTM_CALLBACK_URL = "/paytm/response/"
+
+if DEBUG:
+    PAYTM_MERCHANT_KEY = "xxxx"
+    PAYTM_MERCHANT_ID = "xxxx"
+    PAYTM_WEBSITE = 'WEB_STAGING'
+    HOST_URL = 'http://localhost:8000'
+    '''
+    In sandbox enviornment you can use following wallet credentials to login and make payment.
+    Mobile Number : 7777777777
+    Password : Paytm12345
+    This test wallet is topped-up to a balance of 7000 Rs. every 5 minutes.
+    '''

@@ -105,3 +105,37 @@
    });
  });
 
+/*Forget Password */
+
+$(document).ready(function(){
+
+    $('#forget_button').on('click',function(e){
+         e.preventDefault();
+
+        $email = $('#inputEmail').val()
+           if($('#inputEmail').val()==""){
+
+            $('#success').text("Please fill the fields*");
+            return false;
+
+           }
+
+        else {
+
+            $.ajax({
+              type: "POST",
+              url: "/forget_password",
+              data: {
+                   email:$email,
+                   csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+              },
+
+               success:function(data){
+               console.log(data);
+               $('#success').text(data);
+              }
+
+            });
+          }
+    });
+});
