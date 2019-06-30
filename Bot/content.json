@@ -25,14 +25,16 @@
          "context_set": ""
         },
         {"tag": "8",
-         "patterns": ["Bye", "See you later", "Goodbye"],
-         "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."],
+         "patterns": ["How many courses available","Tell me about Course","Courses Link"],
+         "responses": ["Python , Java and Web Development","Ptyhon , Java ,Django, Spring , Hibernate , HTML , JQuery and etc","we can see that on that link ...."],
          "context_set": ""
         },
         {"tag": "9",
-         "patterns": ["Thank you"],
-         "responses": ["You are welcome"],
+         "patterns": ["Bye", "See you later", "Goodbye"],
+         "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."],
          "context_set": ""
         }
+        
+
    ]
 }

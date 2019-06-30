@@ -1,14 +1,12 @@
 import nltk
-from nltk.stem.lancaster import LancasterStemmer
-
 import numpy as np
 import tensorflow as tf
 import tflearn
 import random
 import pickle
-
-from Bot import path
 import json
+from nltk.stem.lancaster import LancasterStemmer
+from Bot import path
 
 stemmer = LancasterStemmer()
 with open(path.getJsonPath()) as json_data:

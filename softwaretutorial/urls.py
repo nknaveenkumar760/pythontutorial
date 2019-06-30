@@ -32,7 +32,7 @@ urlpatterns = [
     url('contact/', include('contact.urls')),
 
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-
+    url('api', include("chatbot.urls")),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

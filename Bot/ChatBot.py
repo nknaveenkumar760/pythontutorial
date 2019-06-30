@@ -1,13 +1,12 @@
 import nltk
-from nltk.stem.lancaster import LancasterStemmer
-
 import numpy as np
 import tflearn
 import random
-
 import pickle
 import json
 from Bot import path
+from nltk.stem.lancaster import LancasterStemmer
+
 nltk.download('punkt')
 
 

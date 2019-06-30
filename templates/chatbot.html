@@ -18,7 +18,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: fixed;
   bottom: 23px;
   right: 28px;
-  width: 280px;
+  width: 270px;
+  z-index: 5;
 }
 
 /* The popup chat - hidden by default */
@@ -27,85 +28,203 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: fixed;
   bottom: 0;
   right: 25px;
-  border: 5px solid #f1f1f1;
-  z-index: 9;
-  border-radius: 10px;
-  padding: 10px;
+  height: 70%;
+  width: 30%;
+  z-index: 5;
   
 }
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 330px;
+  height: 100%;
   padding: 10px;
-  background-color: white;
+  background-color:rgb(230, 134, 134);
 }
 /* Full-width textarea */
 .form-container textarea {
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   margin: 5px 0 22px 0;
   background: #f1f1f1;
-  min-height: 80px;
-  overflow: auto;
-  border-radius: 25px;
+  min-height: 30px;
+  border-radius: 10px;
   border: 2px solid #73AD21;
-  padding: 10px; 
+  padding: 6px; 
  
 }
 
+
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color:  black;
+  background-color: white;
   outline: none;
 }
 
 /* Set a style for the submit/send button */
-.form-container .btn {
+/* .form-container .btn {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 30%;
   margin-bottom:10px;
   opacity: 0.8;
+  
+} */
+
+.containers {
+  border: 2px solid #f2fcdf;
+  background-color: #e6ecd3;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
+.darkers {
+  border-color: rgb(201, 236, 222);
+  background-color: rgba(184, 236, 236, 0.945);
+}
+
+.containers::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.containers img {
+  float: right;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.containers img.right {
+  float: left;
+  margin-left: 10px;
+  margin-right:0;
+}
+
+.time-left {
+  float: left;
+  color: #aaa;
+}
+
+.time-right {
+  float: right;
+  color: #999;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
-  opacity: 3;
+  opacity: 4;
 }
+
 </style>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/toastr.js' %}"></script>
+
+<!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
+<link rel="stylesheet" href="{% static 'css/toastr.min.css' %}">
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 </head>
 <body>
 
 <button class="open-button" onclick="openForm()">Need help? Ask Tutor</button>
 
 <div class="chat-popup" id="myForm">
-  <form action=" " class="form-container" style="background-color: black">
+  <div class="form-container" style="overflow: scroll;">
+
     <div class="col-xs-2">
         <h3><img src="{% static 'images/logo.png' %}" width="30" align="right" height="30"></h3>
     </div>
       <div>
-    <h3 style="color: #f1f1f1">Ask Tutor</h3>
+          <button type="button" class="close" onclick="closeForm()" style="color:white" >&times;</button>
+    <h3 style="color: #f1f1f1">Ask Tutor</h3><br>
     <h6 style="margin-top: -28px; color: #f1f1f1"> you can ask any Query about any Courses</h6>
+    
    </div>
-   <br><br><br>
-    <textarea placeholder="Ask your Query" name="msg"  rows="2" required></textarea>
 
-    <button type="submit" class="btn">Send</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
+   <div class="response">
+  <div style="width: 100%;padding:0;">
+   <div class="col-md-12">
+    <div class="row" id="MessageContent">
+    </div>
+  </div>
+  </div>
+   </div>
+  
+
+   <div class="panel-footer">
+      <div class="input-group">
+    <textarea placeholder="Ask your Query" name="msg" class="form-control input-sm chat_input" id="Message" style="float: left; width: 260px"></textarea>
+    <button type="submit" id='Reply' class="btn btn-primary btn-sm" style="float: right; width: 80px">Send</button>
+  </div>
+  </div>
+ </div>
+</div>
 </div>
 
 <script>
-function openForm() {
+
+$(document).ready(function(){
+
+    // toastr.options.positionClass = 'toast-bottom-left';
+
+   $('#Reply').on('click',function(){
+
+    var msgText = $('#Message');
+
+       var msg = msgText.val()
+       if (msg == '') {
+          //  toastr.error("Message can not be empty")
+           return;
+       }
+
+       var data = {
+           "msg": msg
+       }
+       $.ajax({
+           url: '/api',
+           data: JSON.stringify(data),
+           method: 'POST',
+           headers: {
+          'X-CSRFToken': '{{ csrf_token }}',
+        },
+           success: function (res) {
+               drawMessage(res);
+               $("#Message").val(" ");
+               $(".response").animate({scrollTop:$(".response")[0].clientHeight}, 'slow');
+               $("#Message").click();
+               msgText.val('')
+
+           },
+           error: function (err) {
+               if (err.desc == null)
+                   err.desc = "Something went wrong"
+              //  toastr.error(err.desc)
+           }
+       });
+
+   });
+ });
+
+
+   var msgContent = $('#MessageContent');
+
+   function drawMessage(res) {
+      //  msgContent.append("<div class='alert alert-success pull-right' styel=position:fixed><p>"+res.ques+"</p><p class='time'>"+res.time+"</p></div>");
+      //  msgContent.append("<div class='alert alert-danger 'styel=position:fixed><p>"+res.res+"</p><p class='time'>"+res.time+"</p></div>")
+      //  //msgText.val('')
+
+          msgContent.append("<div class='containers'><img src='{% static 'image/naveen gupta.jpg' %}' alt='Avatar' style=width:100%><p>"+res.ques+"</p><span class='time-left'>"+res.time+"</span></div>")
+          msgContent.append("<div class='containers darkers'><img src='{% static 'image/chatbot.png' %}' class='right' alt='Avatar' style=width:100%><p>"+res.res+"</p><span class='time-right'>"+res.time+"</span></div>")
+         
+   }
+
+   function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
 
@@ -116,3 +235,4 @@ function closeForm() {
 
 </body>
 </html>
+
